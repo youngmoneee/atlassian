@@ -38,7 +38,7 @@ git clone https://github.com/youngmoneee/atlassian.git && cd atlassian
 
 ### Bootstrap
 ```bash
-docker compose up
+docker compose up -d
 ```
 
 ### SET .ENV
