@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  jira:
+    build: ./jira
+    container_name: jira
+    restart: always
+    depends_on:
+      - database
+    
+  bitbucket:
+    build: ./bitbucket
+    container_name: bitbucket
+    restart: always
+    depends_on:
+      - database
+
+  confluence:
+    build: ./confluence
+    container_name: confluence
+    restart: always
+    depends_on:
+      - database
+
+  nginx:
+    build: ./nginx
+    container_name: nginx
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - jira
+      - confluence
+      - bitbucket
+
+  database:
+    image: postgres:13
+    container_name: database
+    restart: always
+    #volumes:
+    #  - persistence:/var/lib/postgresql/data
