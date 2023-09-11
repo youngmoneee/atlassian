@@ -37,5 +37,6 @@ services:
     image: postgres:13
     container_name: database
     restart: always
+    env_file: .env
     #volumes:
     #  - persistence:/var/lib/postgresql/data
